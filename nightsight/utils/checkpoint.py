@@ -5,6 +5,22 @@ from pathlib import Path
 from typing import Dict, Any, Optional, Union, Tuple
 import json
 from datetime import datetime
+import numpy as np
+
+
+def convert_to_python_types(obj):
+    """Convert numpy types to native Python types for JSON serialization."""
+    if isinstance(obj, np.integer):
+        return int(obj)
+    elif isinstance(obj, np.floating):
+        return float(obj)
+    elif isinstance(obj, np.ndarray):
+        return obj.tolist()
+    elif isinstance(obj, dict):
+        return {k: convert_to_python_types(v) for k, v in obj.items()}
+    elif isinstance(obj, (list, tuple)):
+        return [convert_to_python_types(v) for v in obj]
+    return obj
 
 
 def save_checkpoint(
@@ -59,9 +75,9 @@ def save_checkpoint(
     summary = {
         "epoch": epoch,
         "timestamp": checkpoint["timestamp"],
-        "metrics": metrics or {},
+        "metrics": convert_to_python_types(metrics) if metrics else {},
     }
-    summary.update({k: v for k, v in extra_info.items() if isinstance(v, (int, float, str, bool))})
+    summary.update({k: convert_to_python_types(v) for k, v in extra_info.items() if isinstance(v, (int, float, str, bool, np.integer, np.floating))})
 
     summary_path = path.with_suffix(".json")
     with open(summary_path, "w") as f:
@@ -94,7 +110,7 @@ def load_checkpoint(
     if not path.exists():
         raise FileNotFoundError(f"Checkpoint not found: {path}")
 
-    checkpoint = torch.load(path, map_location=device)
+    checkpoint = torch.load(path, map_location=device, weights_only=False)
 
     if model is not None:
         # Handle potential key mismatches from DataParallel

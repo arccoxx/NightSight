@@ -16,6 +16,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import DataLoader
+from torch.utils.tensorboard import SummaryWriter
 from tqdm import tqdm
 import yaml
 
@@ -283,6 +284,9 @@ def main():
         best_metric="psnr"
     )
 
+    # TensorBoard writer
+    writer = SummaryWriter(output_dir / "tensorboard")
+
     # Resume if specified
     start_epoch = 0
     if args.resume:
@@ -307,6 +311,12 @@ def main():
         print(f"Epoch {epoch}: Train Loss: {train_metrics['loss']:.4f}, "
               f"Val PSNR: {val_metrics['psnr']:.2f}, Val SSIM: {val_metrics['ssim']:.4f}")
 
+        # Log to TensorBoard
+        writer.add_scalar('Loss/train', train_metrics['loss'], epoch)
+        writer.add_scalar('Metrics/PSNR', val_metrics['psnr'], epoch)
+        writer.add_scalar('Metrics/SSIM', val_metrics['ssim'], epoch)
+        writer.add_scalar('Learning_Rate', scheduler.get_last_lr()[0], epoch)
+
         # Save checkpoint
         metrics = {**train_metrics, **val_metrics}
         ckpt_manager.save(model, optimizer, epoch, metrics, scheduler)
@@ -317,6 +327,9 @@ def main():
             print(f"New best PSNR: {best_psnr:.2f}")
 
     print(f"Training complete! Best PSNR: {best_psnr:.2f}")
+
+    # Close TensorBoard writer
+    writer.close()
 
 
 if __name__ == "__main__":
