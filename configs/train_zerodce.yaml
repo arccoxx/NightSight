@@ -1,0 +1,37 @@
+model:
+  name: zerodce
+  in_channels: 3
+  out_channels: 3
+  base_channels: 32
+  num_blocks: 8
+  extra:
+    num_curves: 8
+
+data:
+  train_dir: data/train
+  val_dir: data/val
+  patch_size: 256
+  batch_size: 16
+  num_workers: 4
+  random_crop: true
+  random_flip: true
+  random_rotation: false
+
+training:
+  epochs: 200
+  learning_rate: 0.0001
+  weight_decay: 0.0001
+  scheduler: cosine
+  l1_weight: 0.0
+  perceptual_weight: 0.0
+  ssim_weight: 0.0
+  color_weight: 0.5
+  gradient_clip: 1.0
+  mixed_precision: true
+  checkpoint_dir: checkpoints
+  save_every: 10
+  log_every: 100
+
+seed: 42
+device: auto
+debug: false
