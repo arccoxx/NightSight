@@ -10,10 +10,12 @@ build/
 
 # Data and outputs
 data/
-outputs/
-*.png
-*.jpg
-*.jpeg
+outputs/*
+!outputs/method_comparison/
+
+# Allow comparison images specifically
+!outputs/method_comparison/**/*.png
+!outputs/method_comparison/**/*.jpg
 
 # IDE
 .vscode/
