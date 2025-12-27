@@ -6,15 +6,9 @@ NightSight is a comprehensive Python package for enhancing low-light and nightti
 
 ## Sample Results
 
-<table>
-  <tr>
-    <td><b>Original</b></td>
-    <td><b>NightSight Enhanced</b></td>
-  </tr>
-  <tr>
-    <td><img src=""outputs\nightsight\visualizations\comparison.png"" width="800"></td>
-  </tr>
-</table>
+![NightSight Enhancement Results](outputs/samples/comparison_panels/sample_146_panel.png)
+
+*Comparison showing: Low-light Input | Enhanced Output | Ground Truth*
 
 ## Features
 
@@ -304,20 +298,11 @@ v2 is recommended only for:
 
 ### v2 Sample Results
 
-<table>
-  <tr>
-    <td><b>Original</b></td>
-    <td><b>v1 (Recommended)</b></td>
-    <td><b>v2 (Experimental)</b></td>
-  </tr>
-  <tr>
-    <td><img src="outputs/readme_samples/originals/146_original.png" width="266"></td>
-    <td><img src="outputs/readme_samples/v1/146_v1.png" width="266"></td>
-    <td><img src="outputs/readme_samples/v2/146_v2.png" width="266"></td>
-  </tr>
-</table>
+![v1 vs v2 Comparison](outputs/readme_samples/146_comparison.png)
 
-*Note: v2 is optimized for real-time tracking and stylistic effects rather than pure image quality.*
+*Comparison: Original | v1 (Recommended) | v2 (Experimental)*
+
+**Note:** v2 is optimized for real-time tracking and stylistic effects rather than pure image quality.
 
 ### v2 Quick Start
 
