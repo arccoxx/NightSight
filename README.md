@@ -4,47 +4,22 @@
 
 NightSight is a comprehensive Python package for enhancing low-light and nighttime images using state-of-the-art deep learning techniques combined with traditional image processing methods. It enables "seeing in the dark" without specialized hardware, extracting maximum information from severely underexposed images.
 
----
+## Sample Results
 
-## 🆕 NightSight v2 - Military Night Vision Edition
-
-**NEW!** NightSight v2 is now available with military-inspired night vision capabilities:
-- 🎯 **Depth-based object differentiation**
-- ✨ **Glowing edge outlines** (military night vision style)
-- 🔍 **Real-time object detection & tracking**
-- 📊 **Scene-adaptive processing**
-- 🚀 **Zero-DCE++ low-light enhancement**
-
-**[See README_V2.md for full v2 documentation](README_V2.md)**
-
-### Quick Start v2
-
-```python
-from nightsight.v2 import NightSightV2Pipeline
-
-pipeline = NightSightV2Pipeline(device='cuda')
-enhanced = pipeline.enhance_image('dark.jpg', 'enhanced_v2.jpg')
-pipeline.process_webcam()  # Real-time demo
-```
-
-### Try It Now
-
-```bash
-# Real-time webcam with all features
-python scripts/realtime_v2_demo.py
-
-# Process an image
-python scripts/inference_v2.py -i input.jpg -o output.jpg
-
-# Compare v1 vs v2
-python scripts/inference_v2.py -i input.jpg -o comparison.jpg --compare-v1
-```
-
----
-
-## NightSight v1 (Original)
-
-The original NightSight provides robust low-light enhancement with proven models and techniques.
+<table>
+  <tr>
+    <td><b>Original</b></td>
+    <td><b>NightSight Enhanced</b></td>
+  </tr>
+  <tr>
+    <td><img src="outputs/readme_samples/originals/146_original.png" width="400"></td>
+    <td><img src="outputs/readme_samples/v1/146_v1.png" width="400"></td>
+  </tr>
+  <tr>
+    <td><img src="outputs/readme_samples/originals/171_original.png" width="400"></td>
+    <td><img src="outputs/readme_samples/v1/171_v1.png" width="400"></td>
+  </tr>
+</table>
 
 ## Features
 
@@ -73,7 +48,7 @@ The original NightSight provides robust low-light enhancement with proven models
 ### From Source (Recommended)
 
 ```bash
-git clone https://github.com/nightsight/nightsight.git
+git clone https://github.com/arccoxx/NightSight.git
 cd nightsight
 pip install -e .
 ```
@@ -313,6 +288,74 @@ Performance on LOL dataset:
 | Retinexformer | 23.5 | 0.85 | 1.6M | 45 |
 | NightSightNet | 24.2 | 0.87 | 2.1M | 35 |
 
+---
+
+## 🧪 NightSight v2 (Experimental)
+
+**⚠️ EXPERIMENTAL:** NightSight v2 is an experimental version inspired by military night vision systems. While it includes interesting features like depth-aware outlines and object tracking, **v1 (above) provides better overall image quality for most use cases**.
+
+v2 is recommended only for:
+- Experimental/research purposes
+- Real-time object tracking applications
+- Military night vision aesthetic preferences
+
+### v2 Features
+
+- 🎯 Depth-based object differentiation
+- ✨ Glowing edge outlines (military night vision style)
+- 🔍 Real-time object detection & tracking (YOLOv8n)
+- 📊 Scene-adaptive processing
+- 🚀 Zero-DCE++ low-light enhancement
+
+### v2 Sample Results
+
+<table>
+  <tr>
+    <td><b>Original</b></td>
+    <td><b>v1 (Recommended)</b></td>
+    <td><b>v2 (Experimental)</b></td>
+  </tr>
+  <tr>
+    <td><img src="outputs/readme_samples/originals/146_original.png" width="266"></td>
+    <td><img src="outputs/readme_samples/v1/146_v1.png" width="266"></td>
+    <td><img src="outputs/readme_samples/v2/146_v2.png" width="266"></td>
+  </tr>
+</table>
+
+*Note: v2 is optimized for real-time tracking and stylistic effects rather than pure image quality.*
+
+### v2 Quick Start
+
+```python
+from nightsight.v2 import NightSightV2Pipeline
+
+# Create v2 pipeline
+pipeline = NightSightV2Pipeline(device='cuda')
+
+# Enhance image
+enhanced = pipeline.enhance_image('dark.jpg', 'enhanced_v2.jpg')
+
+# Real-time webcam with tracking
+pipeline.process_webcam(camera_id=0)
+```
+
+### v2 Command Line
+
+```bash
+# Process an image
+python scripts/inference_v2.py -i dark.jpg -o enhanced.jpg
+
+# Real-time webcam demo
+python scripts/realtime_v2_demo.py --camera 0
+
+# Compare v1 vs v2
+python scripts/demo_v1_v2_comparison.py -i dark.jpg
+```
+
+**[See README_V2.md for full v2 documentation](README_V2.md)**
+
+---
+
 ## Citation
 
 If you use NightSight in your research, please cite:
@@ -322,7 +365,7 @@ If you use NightSight in your research, please cite:
   title={NightSight: Advanced Night Vision Enhancement},
   author={NightSight Team},
   year={2024},
-  url={https://github.com/nightsight/nightsight}
+  url={https://github.com/arccoxx/NightSight}
 }
 ```
 

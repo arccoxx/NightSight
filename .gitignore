@@ -19,6 +19,7 @@ outputs/*
 !outputs/samples/
 !outputs/final_tests/
 !outputs/zerodce_v2/
+!outputs/readme_samples/
 
 # Allow comparison and sample images
 !outputs/method_comparison/**/*.png
@@ -32,6 +33,8 @@ outputs/*
 !outputs/final_tests/**/*.jpg
 !outputs/zerodce_v2/zerodce_best.pth
 !outputs/zerodce_v2/training_results.txt
+!outputs/readme_samples/**/*.png
+!outputs/readme_samples/**/*.jpg
 
 # Checkpoints and logs (excluded - see models/ for best model)
 *.pth
