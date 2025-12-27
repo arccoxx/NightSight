@@ -17,6 +17,8 @@ data/
 outputs/*
 !outputs/method_comparison/
 !outputs/samples/
+!outputs/final_tests/
+!outputs/zerodce_v2/
 
 # Allow comparison and sample images
 !outputs/method_comparison/**/*.png
@@ -26,6 +28,10 @@ outputs/*
 !outputs/samples/**/*.jpg
 !outputs/samples/**/*.html
 !outputs/samples/**/*.md
+!outputs/final_tests/**/*.png
+!outputs/final_tests/**/*.jpg
+!outputs/zerodce_v2/zerodce_best.pth
+!outputs/zerodce_v2/training_results.txt
 
 # Checkpoints and logs (excluded - see models/ for best model)
 *.pth
@@ -33,6 +39,7 @@ outputs/*
 *.log
 !models/*.pth
 !models/*.json
+!outputs/zerodce_v2/zerodce_best.pth
 tensorboard/
 
 # Temporary files

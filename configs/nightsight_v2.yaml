@@ -1,0 +1,144 @@
+# NightSight v2 Configuration
+
+model:
+  name: nightsight_v2
+  device: auto
+
+  # Module settings
+  modules:
+    depth:
+      enabled: true
+      base_channels: 32
+
+    zerodce:
+      enabled: true
+      num_iterations: 8
+      base_channels: 32
+
+    edge_outliner:
+      enabled: true
+      use_deep_edges: true
+      use_traditional: true
+      glow_color: [0, 255, 0]  # Green (RGB)
+      thickness: 2
+      intensity: 0.8
+
+    object_detector:
+      enabled: true
+      model: yolov8n.pt
+      conf_threshold: 0.25
+      iou_threshold: 0.45
+
+    tracker:
+      enabled: true
+      max_age: 30
+      min_hits: 3
+      iou_threshold: 0.3
+
+    super_resolution:
+      enabled: false  # Disabled by default (slow)
+      scale: 2
+      num_features: 64
+      num_blocks: 8
+
+    scene_classifier:
+      enabled: true
+      use_ml: false  # Use statistical method
+
+# Training settings
+training:
+  # Zero-DCE++ training
+  zerodce:
+    epochs: 200
+    batch_size: 8
+    lr: 0.0001
+    optimizer: adam
+
+    # Loss weights
+    loss_weights:
+      spatial_consistency: 1.0
+      exposure_control: 10.0
+      color_constancy: 5.0
+      illumination_smoothness: 200.0
+
+  # Depth estimation training
+  depth:
+    epochs: 100
+    batch_size: 16
+    lr: 0.001
+    optimizer: adam
+
+    # Loss weights
+    loss_weights:
+      depth_loss: 1.0
+      gradient_loss: 0.5
+
+  # Edge detection training
+  edge:
+    epochs: 50
+    batch_size: 8
+    lr: 0.0001
+    optimizer: adam
+
+    loss_weights:
+      edge_loss: 1.0
+      fusion_loss: 1.0
+
+  # Super-resolution training
+  superres:
+    epochs: 100
+    batch_size: 16
+    lr: 0.0001
+    optimizer: adam
+
+    loss_weights:
+      pixel_loss: 1.0
+      perceptual_loss: 0.1
+
+# Data settings
+data:
+  # For Zero-DCE++ (unsupervised)
+  dark_images_dir: data/dark_images
+
+  # For depth (if available)
+  depth_dataset_dir: data/depth_dataset
+
+  # For edge detection
+  edge_dataset_dir: data/bsds500
+
+  # For super-resolution
+  sr_dataset_dir: data/div2k
+
+  # Augmentation
+  augmentation:
+    random_crop: true
+    crop_size: [256, 256]
+    random_flip: true
+    random_rotation: false
+    color_jitter: false
+
+# Inference settings
+inference:
+  # Output settings
+  output_format: png
+  save_components: false
+
+  # Video settings
+  video:
+    fps: 30
+    codec: mp4v
+
+  # Real-time settings
+  realtime:
+    display_fps: true
+    save_screenshots: true
+
+# Optimization
+optimization:
+  # Model optimization
+  use_fp16: false  # Mixed precision training
+  use_tensorrt: false  # TensorRT optimization
+
+  # Performance
+  num_workers: 4
+  pin_memory: true

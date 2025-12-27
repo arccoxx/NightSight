@@ -4,6 +4,48 @@
 
 NightSight is a comprehensive Python package for enhancing low-light and nighttime images using state-of-the-art deep learning techniques combined with traditional image processing methods. It enables "seeing in the dark" without specialized hardware, extracting maximum information from severely underexposed images.
 
+---
+
+## 🆕 NightSight v2 - Military Night Vision Edition
+
+**NEW!** NightSight v2 is now available with military-inspired night vision capabilities:
+- 🎯 **Depth-based object differentiation**
+- ✨ **Glowing edge outlines** (military night vision style)
+- 🔍 **Real-time object detection & tracking**
+- 📊 **Scene-adaptive processing**
+- 🚀 **Zero-DCE++ low-light enhancement**
+
+**[See README_V2.md for full v2 documentation](README_V2.md)**
+
+### Quick Start v2
+
+```python
+from nightsight.v2 import NightSightV2Pipeline
+
+pipeline = NightSightV2Pipeline(device='cuda')
+enhanced = pipeline.enhance_image('dark.jpg', 'enhanced_v2.jpg')
+pipeline.process_webcam()  # Real-time demo
+```
+
+### Try It Now
+
+```bash
+# Real-time webcam with all features
+python scripts/realtime_v2_demo.py
+
+# Process an image
+python scripts/inference_v2.py -i input.jpg -o output.jpg
+
+# Compare v1 vs v2
+python scripts/inference_v2.py -i input.jpg -o comparison.jpg --compare-v1
+```
+
+---
+
+## NightSight v1 (Original)
+
+The original NightSight provides robust low-light enhancement with proven models and techniques.
+
 ## Features
 
 - **Multiple Deep Learning Models**
