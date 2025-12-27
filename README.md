@@ -12,12 +12,7 @@ NightSight is a comprehensive Python package for enhancing low-light and nightti
     <td><b>NightSight Enhanced</b></td>
   </tr>
   <tr>
-    <td><img src="outputs/readme_samples/originals/146_original.png" width="400"></td>
-    <td><img src="outputs/readme_samples/v1/146_v1.png" width="400"></td>
-  </tr>
-  <tr>
-    <td><img src="outputs/readme_samples/originals/171_original.png" width="400"></td>
-    <td><img src="outputs/readme_samples/v1/171_v1.png" width="400"></td>
+    <td><img src=""outputs\nightsight\visualizations\comparison.png"" width="800"></td>
   </tr>
 </table>
 
