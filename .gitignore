@@ -8,19 +8,37 @@ __pycache__/
 dist/
 build/
 
-# Data and outputs
+# Data
 data/
+*.tar.gz
+*.zip
+
+# Training outputs (keep only samples and comparisons)
 outputs/*
 !outputs/method_comparison/
 !outputs/samples/
 
-# Allow comparison images specifically
+# Allow comparison and sample images
 !outputs/method_comparison/**/*.png
 !outputs/method_comparison/**/*.jpg
+!outputs/method_comparison/**/*.md
 !outputs/samples/**/*.png
 !outputs/samples/**/*.jpg
 !outputs/samples/**/*.html
 !outputs/samples/**/*.md
+
+# Checkpoints and logs (excluded - see models/ for best model)
+*.pth
+*.ckpt
+*.log
+!models/*.pth
+!models/*.json
+tensorboard/
+
+# Temporary files
+*.mp4
+*.avi
+training_progress.png
 
 # IDE
 .vscode/
