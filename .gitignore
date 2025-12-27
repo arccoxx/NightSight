@@ -12,10 +12,15 @@ build/
 data/
 outputs/*
 !outputs/method_comparison/
+!outputs/samples/
 
 # Allow comparison images specifically
 !outputs/method_comparison/**/*.png
 !outputs/method_comparison/**/*.jpg
+!outputs/samples/**/*.png
+!outputs/samples/**/*.jpg
+!outputs/samples/**/*.html
+!outputs/samples/**/*.md
 
 # IDE
 .vscode/
