@@ -10,19 +10,13 @@ NightSight v2 introduces military-grade night vision capabilities to standard ca
 
 ## Sample Results
 
+### v1: Standard Image Enhancement
+![NightSight v1 Enhancement Results](outputs/method_comparison/3_comparisons/146_all_methods.png)
+*Comparison of v1 methods showing Input, Traditional (SSR, MSR, MSRCR, CLAHE), Deep Learning (Zero-DCE, NightSightNet), and Ground Truth.*
+
+### v2: Military-Inspired Night Vision
 ![NightSight v2 Full Enhancement](outputs/final_tests/146_full.png)
 *Full v2 Enhancement: Low-light enhancement + Depth-aware outlines + Object Detection*
-
-### Comparison
-![Comparison](outputs/final_tests/146_comparison.png)
-*Original vs v1 (Standard) vs v2 (Military Style)*
-
-### Feature Visualization
-![Depth-Aware Outlines](outputs/final_tests/146_depth_aware.png)
-*Depth-Aware Outlines: Color indicates distance (Red=Near, Blue=Far)*
-
-![Edge Detection](outputs/final_tests/146_edges_only.png)
-*Pure Edge Detection Mode*
 
 ### Core Features
 
