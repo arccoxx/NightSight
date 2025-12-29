@@ -6,16 +6,9 @@ NightSight is a comprehensive Python package for enhancing low-light and nightti
 
 ## Sample Results
 
-We provide comprehensive comparisons against state-of-the-art methods and ground truth.
+![NightSight v1 Enhancement Results](outputs/method_comparison/3_comparisons/146_all_methods.png)
 
-![Comparison Grid 1](outputs/method_comparison/3_comparisons/146_all_methods.png)
-*Sample 146: Comparison of traditional and deep learning methods against Ground Truth*
-
-![Comparison Grid 2](outputs/method_comparison/3_comparisons/111_all_methods.png)
-*Sample 111: Low-light enhancement results*
-
-![Comparison Grid 3](outputs/method_comparison/3_comparisons/1_all_methods.png)
-*Sample 1: Method comparison*
+*Comparison of v1 methods showing Input, Traditional (SSR, MSR, MSRCR, CLAHE), Deep Learning (Zero-DCE, NightSightNet), and Ground Truth.*
 
 ## Features
 
