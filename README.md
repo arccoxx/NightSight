@@ -8,6 +8,22 @@ NightSight v2 is an experimental enhancement system inspired by military night v
 
 NightSight v2 introduces military-grade night vision capabilities to standard cameras:
 
+## Sample Results
+
+![NightSight v2 Full Enhancement](outputs/final_tests/146_full.png)
+*Full v2 Enhancement: Low-light enhancement + Depth-aware outlines + Object Detection*
+
+### Comparison
+![Comparison](outputs/final_tests/146_comparison.png)
+*Original vs v1 (Standard) vs v2 (Military Style)*
+
+### Feature Visualization
+![Depth-Aware Outlines](outputs/final_tests/146_depth_aware.png)
+*Depth-Aware Outlines: Color indicates distance (Red=Near, Blue=Far)*
+
+![Edge Detection](outputs/final_tests/146_edges_only.png)
+*Pure Edge Detection Mode*
+
 ### Core Features
 
 1. **Depth-Based Object Differentiation**
